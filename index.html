@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asherlee Levy | QA Automation Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.03;
+            background: 
+                radial-gradient(circle at 20% 50%, #00f5ff 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, #7b2cbf 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, #00f5ff 0%, transparent 50%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.03; }
+            50% { opacity: 0.06; }
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 5%;
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00f5ff, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #00f5ff;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem 5%;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00f5ff, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00f5ff, #0099cc);
+            color: #0a0a0a;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 245, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #7b2cbf;
+            color: #e0e0e0;
+        }
+
+        .btn-secondary:hover {
+            background: #7b2cbf;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            background: linear-gradient(135deg, #00f5ff, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about-content {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 245, 255, 0.1);
+            border-radius: 16px;
+            padding: 3rem;
+            line-height: 1.8;
+        }
+
+        .about-content p {
+            color: #c0c0c0;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 245, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: #00f5ff;
+            box-shadow: 0 10px 30px rgba(0, 245, 255, 0.1);
+        }
+
+        .skill-card h3 {
+            color: #00f5ff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            color: #b0b0b0;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .skill-card li:last-child {
+            border-bottom: none;
+        }
+
+        /* Projects Section */
+        .projects-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #b0b0b0;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(123, 44, 191, 0.2);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: #7b2cbf;
+            box-shadow: 0 15px 40px rgba(123, 44, 191, 0.2);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-header h3 {
+            font-size: 1.8rem;
+            color: #00f5ff;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+
+        .tech-badge {
+            background: rgba(0, 245, 255, 0.1);
+            color: #00f5ff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 245, 255, 0.2);
+        }
+
+        .project-description {
+            color: #c0c0c0;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(0, 245, 255, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .social-links a:hover {
+            color: #00f5ff;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: #808080;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <header>
+        <nav>
+            <div class="logo">AL</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Asherlee Levy</h1>
+            <p class="tagline">QA Automation Engineer | Building Smarter Testing Systems with AI</p>
+            <div class="cta-buttons">
+                <a href="https://www.linkedin.com/in/asherleelevy" target="_blank" class="btn btn-primary">
+                    <span>Connect on LinkedIn</span>
+                </a>
+                <a href="https://github.com/users/PixelA/projects/1" target="_blank" class="btn btn-secondary">
+                    <span>View Projects</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <p>I'm a Freelance QA Engineer and QA Automation Engineer with a strong track record of delivering reliable, scalable testing solutions in the tech and services industry. I specialize in functional, accessibility, and usability testing with advanced skills in bug tracking, test planning, and Cypress automation.</p>
+            
+            <p>My recent focus includes leveraging AI-powered tools to accelerate test creation and improve coverage, as well as applying prompt engineering techniques to optimize QA workflows. I'm passionate about building smarter testing systems using automation and AI to ensure quality at speed.</p>
+            
+            <p>I thrive in Agile environments and bring a strategic approach to QA that balances thorough testing with rapid delivery, helping teams ship quality products faster.</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Core Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Test Automation</h3>
+                <ul>
+                    <li>End-to-End Automation (Cypress)</li>
+                    <li>API Testing (PyTest, Postman)</li>
+                    <li>Mobile Testing</li>
+                    <li>CI/CD Integration</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Specialized Testing</h3>
+                <ul>
+                    <li>Accessibility Testing (Axe Deque)</li>
+                    <li>Usability Testing</li>
+                    <li>Functional Testing</li>
+                    <li>Test Planning & Strategy</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Technologies</h3>
+                <ul>
+                    <li>JavaScript</li>
+                    <li>Python</li>
+                    <li>Cypress</li>
+                    <li>PyTest & Postman</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>AI & Innovation</h3>
+                <ul>
+                    <li>AI-Powered Test Tools</li>
+                    <li>Prompt Engineering</li>
+                    <li>Test Automation Optimization</li>
+                    <li>Agile QA Strategy</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects & Work</h2>
+        <div class="projects-intro">
+            <p>Explore my automation projects, testing frameworks, and open-source contributions.</p>
+        </div>
+        
+        <div class="project-card">
+            <div class="project-header">
+                <h3>QA Automation Projects</h3>
+                <a href="https://github.com/users/PixelA/projects/1/views/1" target="_blank" class="btn btn-primary">View Project Board</a>
+            </div>
+            <p class="project-description">
+                A collection of my automation testing projects, frameworks, and tools. This includes end-to-end test suites, API testing implementations, accessibility testing automation, and AI-powered testing experiments. Each project demonstrates best practices in test architecture, maintainability, and CI/CD integration.
+            </p>
+            <div class="tech-stack">
+                <span class="tech-badge">Cypress</span>
+                <span class="tech-badge">Playwright</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">Python</span>
+                <span class="tech-badge">PyTest</span>
+                <span class="tech-badge">API Testing</span>
+                <span class="tech-badge">CI/CD</span>
+                <span class="tech-badge">Accessibility</span>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="https://github.com/PixelA?tab=repositories" target="_blank" class="btn btn-secondary">
+                Browse All Repositories
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/asherleelevy" target="_blank">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                LinkedIn
+            </a>
+            <a href="https://github.com/users/PixelA/projects/1" target="_blank">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                GitHub Projects
+            </a>
+        </div>
+        <p class="copyright">© 2025 Asherlee Levy. Building quality through automation.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll with offset for fixed header
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-card, .project-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
