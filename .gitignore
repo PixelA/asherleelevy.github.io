@@ -1,0 +1,11 @@
+# OS files
+.DS_Store
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Cypress artifacts
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
