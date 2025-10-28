@@ -1,11 +1,23 @@
-# OS files
+# OS
 .DS_Store
 
-# Dependencies
-node_modules/
-package-lock.json
+
+# Node workspaces
+**/node_modules/
+**/package-lock.json
+
 
 # Cypress artifacts
-cypress/screenshots/
-cypress/videos/
-cypress/downloads/
+cypress-portfolio/cypress/screenshots/
+cypress-portfolio/cypress/videos/
+cypress-portfolio/cypress/downloads/
+
+
+# Playwright artifacts
+playwright-portfolio/test-results/
+playwright-portfolio/playwright-report/
+playwright-portfolio/.cache/
+
+
+# JMeter outputs
+jmeter-tests/results/
